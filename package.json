@@ -1,0 +1,41 @@
+{
+  "name": "mini-banco",
+  "version": "1.0.0",
+  "description": "aplicación web que simula funcionalidades banco (Demo Banco Ripley) ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mdurant/miniBanking.git"
+  },
+  "keywords": [
+    "mini",
+    "banking",
+    "mauricio",
+    "duran",
+    "technical",
+    "lead",
+    "tl",
+    "desarrollo",
+    "nodejs",
+    "web",
+    "ripley"
+  ],
+  "author": "Mauricio Durán Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdurant/miniBanking/issues"
+  },
+  "homepage": "https://github.com/mdurant/miniBanking#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
