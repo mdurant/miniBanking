@@ -1,36 +1,32 @@
 const express = require('express');
-const cors = require('cors');
+const path = require('path'); //read fileSystem
 const routes = require('./routes');
-
-//Tablas MariaDB
+//pgsql
 const db = require('./config/db');
 
-db.authenticate()
-    .then(()=> console.log('Conectado al Server'))
+// db.authenticate()
+//     .then(()=> console.log('Conectado al Server'))
+//     .catch(error => console.log(error));
+
+db.sync().then(()=> console.log('Conexión OK a BD!'))
     .catch(error => console.log(error));
+    
+
+require('dotenv').config({path: 'variables.env'});
+
 
 const app = express();
 
-
+// EJS Engine
+app.set('view engine', 'ejs');
+// Carpeta View
+app.set('views', path.join(__dirname, './views'));
+// static 
+app.use(express.static(path.join(__dirname,'public')));
+// Routes
 app.use('/', routes());
 
 
-var corsOptions = {
-    origin: "http://localhost:4001"
-  };
-  
-  app.use(cors(corsOptions));
-  
-  app.use(express.json());
-  
-  app.use(express.urlencoded({ extended: true }));
-
-  app.get("/", (req, res) => {
-    res.json({ message: "Bienvenido a Mini Bank." });
-  });
-  
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`servidor está corriendo en puerto:  ${PORT}.`);
-  });
-
+app.listen(process.env.PORT,()=> {
+    console.log('Server corriendo');
+});

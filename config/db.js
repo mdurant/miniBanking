@@ -1,13 +1,10 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize('bank', 'root', 'root',{
+module.exports = new Sequelize('banco', 'postgres', 'postgres',{
 
   host: 'localhost',
-  dialect: 'mariadb',
-  port: 3306,
-  define: {
-    timestamp: false
-  },
+  dialect: 'postgres',
+  port: 5432,
   pool: {
     max: 5,
     min: 0,
@@ -16,5 +13,3 @@ const db = new Sequelize('bank', 'root', 'root',{
   }
 
 });
-
-module.exports = db;
